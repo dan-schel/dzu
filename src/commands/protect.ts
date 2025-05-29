@@ -3,6 +3,10 @@ import { withConfig, writeConfig } from "../config/persist.js";
 
 export async function protectCommand(args: string[]) {
   await withConfig(async (config) => {
+    // TODO: Display a `npm init` style wizard that allows the user to choose
+    // which directory (enter for pwd), which frequency of backup, and how many
+    // backups to keep in each store.
+
     const path = args[0] ?? process.cwd();
     writeConfig(config.withAsset(new Asset(path)));
     console.log(`Will backup "${path}".`);
