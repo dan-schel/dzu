@@ -8,7 +8,9 @@ export class Config {
   constructor(
     readonly assets: Asset[],
     readonly stores: Store[],
-  ) {}
+  ) {
+    // TODO: Ensure same path cannot be an asset and a store at the same time.
+  }
 
   static readonly json = z
     .object({
@@ -29,10 +31,12 @@ export class Config {
   }
 
   withAsset(asset: Asset) {
+    // TODO: Or return { error: "path-is-store" }.
     return this.with({ assets: [...this.assets, asset] });
   }
 
   withStore(store: Store) {
+    // TODO: Or return { error: "path-is-asset" }.
     return this.with({ stores: [...this.stores, store] });
   }
 
@@ -46,7 +50,7 @@ export class Config {
     } else if (newStores.length < this.stores.length) {
       return { config: newConfig, type: "store" as const };
     } else {
-      return { error: "not-found" };
+      return { error: "not-found" as const };
     }
   }
 }

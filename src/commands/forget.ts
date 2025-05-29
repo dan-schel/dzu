@@ -11,6 +11,7 @@ export async function forgetCommand(args: string[]) {
     }
 
     writeConfig(result.config);
+
     const message = {
       asset: `Will no longer back up "${path}".`,
       store: `Will no longer back up to "${path}".`,
