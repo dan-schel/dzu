@@ -1,0 +1,14 @@
+{
+  "name": "backup-cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": "./bin.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "dev": "rm -rf dist && tsc --watch"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.24",
+    "typescript": "5.8.3"
+  }
+}
