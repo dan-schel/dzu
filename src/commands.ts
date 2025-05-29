@@ -1,8 +1,12 @@
+import { forgetCommand } from "./commands/forget.js";
 import { helpCommand } from "./commands/help.js";
 import { initCommand } from "./commands/init.js";
 import { runInvalid } from "./commands/invalid.js";
+import { listCommand } from "./commands/list.js";
+import { protectCommand } from "./commands/protect.js";
 import { resetCommand } from "./commands/reset.js";
 import { runCommand } from "./commands/run.js";
+import { useCommand } from "./commands/use.js";
 import { versionCommand } from "./commands/version.js";
 
 export type Command = (args: string[]) => Promise<void>;
@@ -13,7 +17,11 @@ export const commands = {
   "-v": versionCommand,
   init: initCommand,
   reset: resetCommand,
+  list: listCommand,
   run: runCommand,
+  protect: protectCommand,
+  use: useCommand,
+  forget: forgetCommand,
 } satisfies CommandList;
 
 export function getCommand(commandStr: string | null): Command {

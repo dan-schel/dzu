@@ -1,5 +1,6 @@
-import { Config } from "../config/config.js";
+import { configFilePathDisplayString, initConfig } from "../config/persist.js";
 
 export async function initCommand() {
-  await Config.init();
+  await initConfig();
+  console.log(`Created "${configFilePathDisplayString}".`);
 }

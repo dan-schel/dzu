@@ -1,5 +1,6 @@
-import { Config } from "../config/config.js";
+import { configFilePathDisplayString, resetConfig } from "../config/persist.js";
 
 export async function resetCommand() {
-  await Config.reset();
+  await resetConfig();
+  console.log(`Reset "${configFilePathDisplayString}".`);
 }
