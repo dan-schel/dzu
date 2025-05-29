@@ -5,10 +5,19 @@
   "bin": "./bin.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "dev": "rm -rf dist && tsc --watch"
+    "dev": "rm -rf dist && tsc --watch",
+    "lint": "eslint . --max-warnings 0 && tsc -p tsconfig.json --noEmit",
+    "format": "prettier --write .",
+    "format-check": "prettier --check ."
   },
   "devDependencies": {
+    "@eslint/js": "9.27.0",
     "@types/node": "22.15.24",
-    "typescript": "5.8.3"
+    "eslint": "9.27.0",
+    "eslint-config-prettier": "10.1.5",
+    "eslint-plugin-prettier": "5.4.0",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.32.1"
   }
 }
