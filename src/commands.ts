@@ -12,6 +12,9 @@ import { versionCommand } from "./commands/version.js";
 export type Command = (args: string[]) => Promise<void>;
 export type CommandList = Record<string, (args: string[]) => Promise<void>>;
 
+// TODO: "audit" command to display which assets are due for backup.
+// TODO: "clean" command to delete everything from a store.
+
 export const commands = {
   help: helpCommand,
   "-v": versionCommand,
