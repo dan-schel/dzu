@@ -1,6 +1,7 @@
 {
   "name": "backup-cli",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "description": "A CLI-based backup tool.",
   "type": "module",
   "bin": "./bin.js",
   "scripts": {
@@ -8,7 +9,29 @@
     "dev": "rm -rf dist && tsc --watch",
     "lint": "eslint . --max-warnings 0 && tsc -p tsconfig.json --noEmit",
     "format": "prettier --write .",
-    "format-check": "prettier --check ."
+    "format-check": "prettier --check .",
+    "package": "npm run build && npm pack"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "backup",
+    "cli",
+    "zip"
+  ],
+  "author": "dan-schel",
+  "license": "MIT",
+  "homepage": "https://github.com/dan-schel/backup-cli",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dan-schel/backup-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dan-schel/backup-cli/issues"
   },
   "devDependencies": {
     "@eslint/js": "9.27.0",
