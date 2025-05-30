@@ -1,5 +1,5 @@
 {
-  "name": "backup-cli",
+  "name": "dzu",
   "version": "0.1.0",
   "description": "A CLI-based backup tool.",
   "type": "module",
