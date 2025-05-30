@@ -12,6 +12,9 @@ const customRules = {
 
     // Warn about prettier violations.
     "prettier/prettier": "warn",
+
+    // Warn about non-null assertions.
+    "@typescript-eslint/no-non-null-assertion": "warn",
   },
 };
 
