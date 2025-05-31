@@ -28,7 +28,7 @@ When you first setup DZU, you'll need to tell it which folders to backup and sav
 ```sh
 dzu init
 dzu protect /path/to/precious-photos
-dzu protect /path/to/precious-
+dzu protect /path/to/precious-documents
 dzu use /path/to/backups-folder
 ```
 
