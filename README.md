@@ -1,4 +1,6 @@
-# Backup CLI
+# Dan's Zip Util
+
+A CLI-based backup tool.
 
 ## Setup for development
 
