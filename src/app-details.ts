@@ -19,8 +19,8 @@ const packageJson = packageJsonSchema.parse(
   JSON.parse(fs.readFileSync(packageJsonFile, "utf-8")),
 );
 
-export const appCommand = packageJson.name;
 export const appName = "Dan's Zip Util";
 export const appNameShort = "DZU";
-export const appFileExtension = `.${appCommand}`;
 export const appVersion = packageJson.version;
+export const appCommand = path.basename(process.argv[1] ?? packageJson.name);
+export const appFileExtension = `.${appCommand}`;

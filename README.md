@@ -42,7 +42,7 @@ For more information about the available commands, run `dzu help`.
 
 ## Developing DZU
 
-1. First, if you have `dzu` installed, temporarily uninstall it with `npm uninstall dzu`.
+1. First, if you have `dzu` installed, temporarily uninstall it with `npm uninstall -g dzu`.
 
 2. Next, clone the repo, install dependencies, and setup the needed symlinks with:
 
@@ -66,3 +66,5 @@ For more information about the available commands, run `dzu help`.
 6. Now so long as `npm run dev` remains running, the `dzu-dev` command should react to source code changes inside this folder. The regular `dzu` command will still run the production version, completely unaffected by anything we touch here.
 
    You can test it by modifying the `version` field in `package.json`. Running `dzu-dev -v` should cause the updated value to print, however `dzu -v` should still match whichever version you've installed from NPM.
+
+   (This separation extends to the configuration. The development version will store configuration in a separate `~/.dzu-dev` file to avoid impacting `~/.dzu`.)
