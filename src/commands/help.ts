@@ -1,11 +1,11 @@
-import { appName } from "../app-details.js";
+import { appName, appNameShort } from "../app-details.js";
 import { commands } from "../commands.js";
 import { configFilePathDisplayString } from "../config/persist.js";
 
 const allDescriptions: Record<keyof typeof commands, string | null> = {
   help: null,
   "-v": null,
-  init: `Initialize ${appName} for first use.`,
+  init: `Initialize ${appNameShort} for first use.`,
   reset: `Reset ${configFilePathDisplayString} to default settings.`,
   list: "Output the list of assets and stores currently in the configuration.",
   run: "Clone all assets which are due for backup to each available store.",

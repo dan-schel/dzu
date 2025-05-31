@@ -1,4 +1,4 @@
-import { appCommand, appFileExtension, appName } from "../app-details.js";
+import { appCommand, appFileExtension, appNameShort } from "../app-details.js";
 import fsp from "fs/promises";
 import path from "path";
 import os from "os";
@@ -40,7 +40,7 @@ export async function withConfig(callback: (config: Config) => Promise<void>) {
   const result = await readConfig();
   if (result.error === "no-config") {
     console.log(
-      `No config found. If it's your first time running ${appName}, run "${appCommand} init".`,
+      `No config found. If it's your first time running ${appNameShort}, run "${appCommand} init".`,
     );
   } else if (result.error === "corrupt-config") {
     console.log(`Config is corrupted. Run "${appCommand} reset" to reset it.`);
