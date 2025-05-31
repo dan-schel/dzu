@@ -40,10 +40,12 @@ export async function withConfig(callback: (config: Config) => Promise<void>) {
   const result = await readConfig();
   if (result.error === "no-config") {
     console.log(
-      `No config found. If it's your first time running ${appNameShort}, run "${appCommand} init".`,
+      `No ${configFilePathDisplayString} found. If it's your first time running ${appNameShort}, run "${appCommand} init".`,
     );
   } else if (result.error === "corrupt-config") {
-    console.log(`Config is corrupted. Run "${appCommand} reset" to reset it.`);
+    console.log(
+      `Your ${configFilePathDisplayString} is corrupt. Run "${appCommand} reset" to reset it.`,
+    );
   } else {
     await callback(result.config);
   }
