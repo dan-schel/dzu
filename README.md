@@ -57,12 +57,12 @@ For more information about the available commands, run `dzu help`.
 
    This creates two symlinks at the location where NodeJS is installed, e.g. `/home/dan/.nvm/versions/node/v22.16.0`. The first is in `[NODEJS]/bin/dzu`, whick symlinks to `[NODEJS]/lib/node_modules/dzu`, which itself is a symlink to the cloned repository.
 
-3. Replace both symlinks to `dzu-dev` (be sure to update the symlink at `[NODEJS]/bin/dzu` to point to the renamed `[NODEJS]/lib/node_modules/dzu-dev`).
+3. Rename both symlinks to `dzu-dev` (be sure to update the symlink at `[NODEJS]/bin/dzu` to point to the renamed `[NODEJS]/lib/node_modules/dzu-dev`).
 
 4. In a new terminal, run `npm run dev` and leave it running in the background.
 
 5. Now that both symlinks are renamed `dzu-dev`, you should be able to safely re-install the production `dzu` from NPM if you wish.
 
-6. Now so long as `npm run dev` remains running, `dzu-dev` should now react to source code changes inside this folder. The regular `dzu` command will still run the production version, and will never be impacted by any source code changes.
+6. Now so long as `npm run dev` remains running, the `dzu-dev` command should react to source code changes inside this folder. The regular `dzu` command will still run the production version, completely unaffected by anything we touch here.
 
-   You can test it by modifying the version number in `package.json`. Running `dzu-dev -v` should cause the updated value to print, however `dzu -v` should still match whichever version you've installed from NPM.
+   You can test it by modifying the `version` field in `package.json`. Running `dzu-dev -v` should cause the updated value to print, however `dzu -v` should still match whichever version you've installed from NPM.
