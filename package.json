@@ -1,6 +1,6 @@
 {
   "name": "dzu",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "files": [
     "dist"
@@ -34,7 +34,7 @@
     "vitest": "3.1.3"
   },
   "author": "dan-schel",
-  "description": "Dan's Zip Util - A CLI-based backup tool.",
+  "description": "Dan's Zip Util - A rudimentary CLI-based backup tool.",
   "license": "MIT",
   "homepage": "https://github.com/dan-schel/dzu",
   "publishConfig": {

@@ -18,7 +18,7 @@ const allDescriptions: Record<keyof typeof commands, string | null> = {
 };
 
 export async function helpCommand() {
-  console.log(`${appName}\nA CLI-based backup tool.\n\nCommands:`);
+  console.log(`${appName}\nA rudimentary CLI-based backup tool.\n\nCommands:`);
 
   const descriptions = Object.entries(allDescriptions)
     .sort(([a], [b]) => a.localeCompare(b))
