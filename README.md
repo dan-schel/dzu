@@ -1,8 +1,21 @@
 # Dan's Zip Util
 
-A CLI-based backup tool.
+A rudimentary CLI-based backup tool.
+
+Tell it:
+
+- Which folders you want backed-up
+- Where to save backups
+
+And it will:
+
+- Zip the folders up
+- Name them according to today's date
+- Copy them to each location you've requested
 
 ## Installation
+
+DZU is available from NPM, just run:
 
 ```sh
 npm i -g dzu
@@ -10,12 +23,18 @@ npm i -g dzu
 
 ## Basic Usage
 
-Define which folder(s) to backup, then define which folder(s) to save backups to.
+When you first setup DZU, you'll need to tell it which folders to backup and save backups to.
 
 ```sh
 dzu init
-dzu protect /path/to/folder-to-backup
-dzu use /path/to/folder-to-save-backups-to
+dzu protect /path/to/precious-photos
+dzu protect /path/to/precious-
+dzu use /path/to/backups-folder
+```
+
+But once that's done, whenever it comes time to run a backup, all you need to do is:
+
+```sh
 dzu run
 ```
 
@@ -23,11 +42,14 @@ For more information about the available commands, run `dzu help`.
 
 ## Developing DZU
 
-1. First, if you have `dzu` installed, temporarily uninstall it.
+1. First, if you have `dzu` installed, temporarily uninstall it with `npm uninstall dzu`.
 
-2. Next, run:
+2. Next, clone the repo, install dependencies, and setup the needed symlinks with:
 
    ```sh
+   https://github.com/dan-schel/dzu.git
+   cd dzu
+   npm i
    chmod +x bin.js
    npm link
    npm link dzu
