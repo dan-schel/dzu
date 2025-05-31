@@ -1,5 +1,6 @@
 import { Asset } from "../config/asset.js";
 import { withConfig, writeConfig } from "../config/persist.js";
+import path from "path";
 
 export async function protectCommand(args: string[]) {
   await withConfig(async (config) => {
@@ -7,8 +8,8 @@ export async function protectCommand(args: string[]) {
     // which directory (enter for pwd), which frequency of backup, and how many
     // backups to keep in each store.
 
-    const path = args[0] ?? process.cwd();
-    writeConfig(config.withAsset(new Asset(path)));
-    console.log(`Will backup "${path}".`);
+    const pathStr = path.resolve(args[0] ?? process.cwd());
+    writeConfig(config.withAsset(new Asset(pathStr)));
+    console.log(`Will backup "${pathStr}".`);
   });
 }

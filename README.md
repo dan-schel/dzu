@@ -50,12 +50,11 @@ For more information about the available commands, run `dzu help`.
    git clone https://github.com/dan-schel/dzu.git
    cd dzu
    npm i
-   chmod +x bin.js
    npm link
    npm link dzu
    ```
 
-   This creates two symlinks at the location where NodeJS is installed, e.g. `/home/dan/.nvm/versions/node/v22.16.0`. The first is in `[NODEJS]/bin/dzu`, whick symlinks to `[NODEJS]/lib/node_modules/dzu`, which itself is a symlink to the cloned repository.
+   This creates two symlinks at the location where NodeJS is installed, e.g. `/home/dan/.nvm/versions/node/v22.16.0`. The first is in `[NODEJS]/bin/dzu`, which symlinks to `[NODEJS]/lib/node_modules/dzu`, which itself is a symlink to the cloned repository.
 
 3. Rename both symlinks to `dzu-dev` or something. (Be sure to update the symlink at `[NODEJS]/bin/dzu` to point to the renamed `[NODEJS]/lib/node_modules/dzu-dev`.)
 
