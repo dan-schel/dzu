@@ -1,11 +1,11 @@
 {
   "name": "dzu",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "files": [
     "dist"
   ],
-  "bin": "./bin.js",
+  "bin": "./bin/dzu",
   "scripts": {
     "build": "rm -rf dist && tsc",
     "dev": "rm -rf dist && tsc --watch",

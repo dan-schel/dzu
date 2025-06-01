@@ -1,20 +1,21 @@
 import { withConfig, writeConfig } from "../config/persist.js";
+import path from "path";
 
 export async function forgetCommand(args: string[]) {
   await withConfig(async (config) => {
-    const path = args[0] ?? process.cwd();
-    const result = config.withoutAssetOrStore(path);
+    const pathStr = path.resolve(args[0] ?? process.cwd());
+    const result = config.withoutAssetOrStore(pathStr);
 
     if (result.error != null) {
-      console.log(`Already not tracking "${path}" as an asset or store.`);
+      console.log(`Already not tracking "${pathStr}" as an asset or store.`);
       return;
     }
 
     writeConfig(result.config);
 
     const message = {
-      asset: `Will no longer back up "${path}".`,
-      store: `Will no longer back up to "${path}".`,
+      asset: `Will no longer back up "${pathStr}".`,
+      store: `Will no longer back up to "${pathStr}".`,
     }[result.type];
     console.log(message);
   });
