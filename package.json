@@ -1,6 +1,6 @@
 {
   "name": "dzu",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "type": "module",
   "files": [
     "dist"
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@dan-schel/js-utils": "4.2.0",
+    "chalk": "5.4.1",
     "zod": "3.25.64"
   },
   "devDependencies": {

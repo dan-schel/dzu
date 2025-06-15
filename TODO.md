@@ -1,7 +1,7 @@
 # TODO List
 
 - [x] Resolve paths in config to absolute paths.
-- [ ] Fix output of progress logger to overwrite existing line for operations.
+- [x] Fix output of progress logger to overwrite existing line for operations.
 - [ ] Validate args properly (i.e. error when there's too many).
 - [ ] Wizards for `dzu protect` and `dzu use`.
 - [ ] Enforce that the same path cannot be an asset and a store.

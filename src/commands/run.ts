@@ -22,12 +22,15 @@ export async function runCommand() {
 
     if (shouldRun) {
       console.log();
-      const outcome = await plan.run(new ProgressLogger());
+
+      const logger = new ProgressLogger();
+      const outcome = await plan.run(logger);
+      logger.end();
 
       if (outcome.success === false) {
-        console.log("\n❌ Backup partially/fully failed.");
+        console.log("\n🔴 Backup partially/fully failed.");
       } else {
-        console.log("\n✅ Backup complete!");
+        console.log("\n🟢 Backup complete!");
       }
     } else {
       console.log("Cancelled.");
