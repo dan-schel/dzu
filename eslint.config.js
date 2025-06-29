@@ -20,7 +20,7 @@ const customRules = {
 
 export default tseslint.config(
   {
-    ignores: ["node_modules", "dist", "coverage"],
+    ignores: ["node_modules", "dist", "coverage", "local"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,

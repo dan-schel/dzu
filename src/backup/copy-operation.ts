@@ -1,23 +1,25 @@
 import { spawn } from "child_process";
 import { once } from "events";
 import path from "path";
-import { createIdFromPath, getIsoDateString } from "../utils/string-utils.js";
+import { JustDate } from "../utils/just-date.js";
+import type { Asset } from "../config/asset.js";
+import type { Store } from "../config/store.js";
+import { CompletedBackup } from "../config/completed-backup.js";
 
 export class CopyOperation {
   constructor(
-    readonly name: string,
-    readonly sourcePath: string,
-    readonly destinationFolder: string,
+    private readonly _date: JustDate,
+    private readonly _asset: Asset,
+    private readonly _store: Store,
   ) {}
 
   async do() {
     try {
-      const assetName = createIdFromPath(this.sourcePath);
-      const zipName = `${getIsoDateString()}-${assetName}.zip`;
-      const destinationPath = path.join(this.destinationFolder, zipName);
+      const zipName = `${this._date.toIso()}-${this._asset.name}.zip`;
+      const destinationPath = path.join(this._store.path, zipName);
 
       const child = spawn("zip", ["-r", destinationPath, "."], {
-        cwd: this.sourcePath,
+        cwd: this._asset.path,
       });
       await once(child, "close");
 
@@ -25,5 +27,13 @@ export class CopyOperation {
     } catch {
       return { error: "unknown" as const };
     }
+  }
+
+  get name() {
+    return `${this._asset.name} -> ${this._store.name}`;
+  }
+
+  asCompletedBackup() {
+    return new CompletedBackup(this._asset.id, this._store.id, this._date);
   }
 }
