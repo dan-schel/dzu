@@ -4,6 +4,7 @@ import { ProgressLogger } from "./progress-logger.js";
 import type { Asset } from "../config/asset.js";
 import type { Store } from "../config/store.js";
 import type { JustDate } from "../utils/just-date.js";
+import { CompletedBackup } from "../config/completed-backup.js";
 
 export class BackupPlan {
   constructor(
@@ -17,7 +18,12 @@ export class BackupPlan {
   }
 
   async run(progress: ProgressLogger) {
+    // TODO: To enable retry, we need to record which operations fail so we have
+    // some method of retrying. Maybe both these variables can be rolled into
+    // one `operationsResults` array or something (see comment below).
     let failures = false;
+    const completedBackups: CompletedBackup[] = [];
+
     const operations = this._getCopyOperations();
 
     for (const operation of operations) {
@@ -31,6 +37,13 @@ export class BackupPlan {
 
       if (outcome.success === true) {
         progress.report(operation.name, "done");
+
+        // TODO: Maybe the result operations return should include the completed
+        // backups to add to the array, or the operations to retry in the case
+        // of failures?
+        if (operation instanceof CopyOperation) {
+          completedBackups.push(operation.asCompletedBackup());
+        }
       } else {
         progress.report(operation.name, "failed");
         failures = true;
@@ -40,7 +53,7 @@ export class BackupPlan {
     if (failures) {
       return { success: false as const };
     } else {
-      return { success: true as const };
+      return { success: true as const, completedBackups };
     }
   }
 

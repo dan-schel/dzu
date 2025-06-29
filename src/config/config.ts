@@ -69,4 +69,15 @@ export class Config {
       return { error: "not-found" as const };
     }
   }
+
+  withCompletedBackups(completedBackups: CompletedBackup[]) {
+    const newCompletedBackups = [
+      ...completedBackups,
+      ...this.completedBackups.filter(
+        (a) => !completedBackups.some((b) => a.hasSameAssetAndStore(b)),
+      ),
+    ].sort((a, b) => a.date.compare(b.date));
+
+    return this.with({ completedBackups: newCompletedBackups });
+  }
 }

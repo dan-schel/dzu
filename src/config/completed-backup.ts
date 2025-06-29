@@ -23,4 +23,8 @@ export class CompletedBackup {
       date: this.date.toJson(),
     };
   }
+
+  hasSameAssetAndStore(other: CompletedBackup) {
+    return this.assetId === other.assetId && this.storeId === other.storeId;
+  }
 }

@@ -4,6 +4,7 @@ import path from "path";
 import { JustDate } from "../utils/just-date.js";
 import type { Asset } from "../config/asset.js";
 import type { Store } from "../config/store.js";
+import { CompletedBackup } from "../config/completed-backup.js";
 
 export class CopyOperation {
   constructor(
@@ -30,5 +31,9 @@ export class CopyOperation {
 
   get name() {
     return `${this._asset.name} -> ${this._store.name}`;
+  }
+
+  asCompletedBackup() {
+    return new CompletedBackup(this._asset.id, this._store.id, this._date);
   }
 }

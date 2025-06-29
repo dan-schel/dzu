@@ -1,4 +1,4 @@
-import { parseIntThrow } from "@dan-schel/js-utils";
+import { itsOk, parseIntThrow } from "@dan-schel/js-utils";
 import { z } from "zod";
 import { buildZodTransform } from "./zod-transform.js";
 
@@ -20,16 +20,15 @@ export class JustDate {
         throw new Error(`"${input}" is not in YYYY-MM-DD format.`);
       }
 
-      const [, year, month, day] = match.map(parseIntThrow);
-
-      // Prevented by the regex.
-      if (year == null || month == null || day == null) throw new Error();
-
+      const year = parseIntThrow(itsOk(match[1]));
+      const month = parseIntThrow(itsOk(match[2]));
+      const day = parseIntThrow(itsOk(match[3]));
       if (!JustDate.isValid(year, month, day)) {
         throw new Error(
           `${JustDate.asIso(year, month, day)} is not a valid date.`,
         );
       }
+
       return new JustDate(year, month, day);
     }),
   );
@@ -40,6 +39,16 @@ export class JustDate {
 
   toIso() {
     return JustDate.asIso(this.year, this.month, this.day);
+  }
+
+  compare(other: JustDate) {
+    if (this.year > other.year) return 1;
+    if (this.year < other.year) return -1;
+    if (this.month > other.month) return 1;
+    if (this.month < other.month) return -1;
+    if (this.day > other.day) return 1;
+    if (this.day < other.day) return -1;
+    return 0;
   }
 
   static today(): JustDate {
