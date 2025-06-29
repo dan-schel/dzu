@@ -5,7 +5,7 @@
 - [ ] Validate args properly (i.e. error when there's too many).
 - [ ] Wizards for `dzu protect` and `dzu use`.
 - [ ] Enforce that the same path cannot be an asset and a store.
-- [ ] Track backup history (i.e. the timestamp of the last backup for each asset/store pair).
+- [x] Track backup history (i.e. the timestamp of the last backup for each asset/store pair).
 - [ ] Allow defining a backup frequency for each asset, and skip backups according to the frequency.
 - [ ] New `dzu audit` command which shows:
   - [ ] Which assets need backup
