@@ -1,3 +1,5 @@
+import { kebabify } from "@dan-schel/js-utils";
+import path from "path";
 import { z } from "zod";
 
 export class Store {
@@ -18,5 +20,9 @@ export class Store {
       id: this.id,
       path: this.path,
     };
+  }
+
+  get name() {
+    return kebabify(path.basename(this.path));
   }
 }
