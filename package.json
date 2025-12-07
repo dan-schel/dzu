@@ -14,8 +14,7 @@
     "lint": "eslint . --max-warnings 0 && tsc -p tsconfig.json --noEmit",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
-    "bump-check": "bump-check --ignore \"^renovate\\/\"",
-    "package": "npm run build && npm pack"
+    "bump-check": "bump-check --ignore \"^renovate\\/\""
   },
   "dependencies": {
     "@dan-schel/js-utils": "4.3.0",
