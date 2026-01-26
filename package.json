@@ -1,6 +1,6 @@
 {
   "name": "dzu",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "type": "module",
   "files": [
     "dist"
@@ -17,20 +17,20 @@
     "bump-check": "bump-check --ignore \"^renovate\\/\""
   },
   "dependencies": {
-    "@dan-schel/js-utils": "4.3.0",
-    "chalk": "5.4.1",
+    "@dan-schel/js-utils": "4.9.0",
+    "chalk": "5.6.2",
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@eslint/js": "9.31.0",
-    "@types/node": "22.16.5",
+    "@eslint/js": "9.39.2",
+    "@types/node": "22.19.7",
     "@vitest/coverage-v8": "3.2.4",
-    "eslint": "9.31.0",
+    "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.3",
-    "prettier": "3.6.2",
-    "typescript": "5.8.3",
-    "typescript-eslint": "8.38.0",
+    "eslint-plugin-prettier": "5.5.5",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.54.0",
     "vitest": "3.2.4"
   },
   "author": "dan-schel",
